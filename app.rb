@@ -17,13 +17,9 @@ get '/about' do
 	erb :about
 end
 
-get '/cart' do
-  erb :cart
-end
-
 post '/cart' do
-	orders_input = params[:orders]
-	@items = parse_orders_input orders_input
+	@orders_input = params[:orders]
+	@items = parse_orders_input @orders_input
 
 	@items.each do |item|
 		# id, cnt. id целиком заменяем на весь объект(заказ)
@@ -46,7 +42,7 @@ def parse_orders_input orders_input
 
    		id = s3[1]
     		cnt = s2[1]
-  
+
 		arr2 = [id, cnt]
 		arr.push arr2
 	end
