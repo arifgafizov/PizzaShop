@@ -11,12 +11,21 @@
 		<td>quantity</td>
 	</thead>
 	<tbody>
+		<% total_price = 0 %>
+		<% total_quantity = 0 %>
 		<% @items.each do |item| %>
 		<tr>
 			<td><%= item[0].title %></td>
 			<td><%= item[0].price %></td>
 			<td><%= item[1] %></td>
 		</tr>
+		<% total_price += item[0].price * item[1].to_i %>
+		<% total_quantity += item[1].to_i %>
 		<% end %>
+		<tr>
+			<td></td>
+			<td>total payable: <%= total_price %> rub</td>
+			<td><%= total_quantity %></td>
+		</tr>
 	</tbody>
 </table>
