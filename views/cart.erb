@@ -1,22 +1,22 @@
 <h2>Your cart</h2>
 
-<%= @items.inspect %>
-
 <div class="row">
 	<div class="col-md-12"><h3>list orders</h3></div>
 </div>
-<div>
-	<input id="orders_input" type="text" name="orders"/>
-</div>
 
 <table class="table table-striped">
+	<thead>
+		<td>name</td>
+		<td>price</td>
+		<td>quantity</td>
+	</thead>
 	<tbody>
+		<% @items.each do |item| %>
 		<tr>
-			<td>№</td>
-			<td>price</td>
-			<td>quantity</td>
+			<td><%= item[0].title %></td>
+			<td><%= item[0].price %></td>
+			<td><%= item[1] %></td>
 		</tr>
+		<% end %>
 	</tbody>
 </table>
-
-
