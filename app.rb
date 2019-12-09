@@ -51,3 +51,7 @@ def parse_orders_input orders_input
 	end
 	return arr
 end
+
+post '/place_order' do
+	@o = Order.new
+end

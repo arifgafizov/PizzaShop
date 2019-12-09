@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_122610) do
+ActiveRecord::Schema.define(version: 2019_12_09_131418) do
 
-  create_table "clients", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.text "name"
     t.text "phone"
     t.text "address"
