@@ -53,5 +53,6 @@ def parse_orders_input orders_input
 end
 
 post '/place_order' do
-	@o = Order.new
+	@o = Order.new params[:order]
+	erb "Your order: #{@o}"
 end
