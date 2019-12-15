@@ -4,53 +4,55 @@
 	<div class="col-md-12"><h3>list orders</h3></div>
 </div>
 
-<table class="table table-striped">
-	<thead>
-		<td>name</td>
-		<td>price</td>
-		<td>quantity</td>
-	</thead>
-	<tbody>
-		<% total_price = 0 %>
-		<% total_quantity = 0 %>
-		<% @items.each do |item| %>
-		<tr>
-			<td><%= item[0].title %></td>
-			<td><%= item[0].price %></td>
-			<td><%= item[1] %></td>
-		</tr>
-		<% total_price += item[0].price * item[1].to_i %>
-		<% total_quantity += item[1].to_i %>
-		<% end %>
-		<tr>
-			<td></td>
-			<td>total payable: <%= total_price %> rub</td>
-			<td><%= total_quantity %></td>
-		</tr>
-	</tbody>
-</table>
+<div id="cart">
+	<table class="table table-striped">
+		<thead>
+			<td>name</td>
+			<td>price</td>
+			<td>quantity</td>
+		</thead>
+		<tbody>
+			<% total_price = 0 %>
+			<% total_quantity = 0 %>
+			<% @items.each do |item| %>
+			<tr>
+				<td><%= item[0].title %></td>
+				<td><%= item[0].price %></td>
+				<td><%= item[1] %></td>
+			</tr>
+			<% total_price += item[0].price * item[1].to_i %>
+			<% total_quantity += item[1].to_i %>
+			<% end %>
+			<tr>
+				<td></td>
+				<td>total payable: <%= total_price %> rub</td>
+				<td><%= total_quantity %></td>
+			</tr>
+		</tbody>
+	</table>
 
 
-<form action="/place_order" method="post" role="form">
+	<form action="/place_order" method="post" role="form">
 
-	<input type="hidden" name="order[orders_input]" value="<%= @orders_input %>"/>
+		<input type="hidden" name="order[orders_input]" value="<%= @orders_input %>"/>
 
-	<div class="form-group">
-    <label>Name:</label>
-    <input name="order[name]" type="text" class="form-control" placeholder="Your name">
-  </div>
+		<div class="form-group">
+	    <label>Name:</label>
+	    <input name="order[name]" type="text" class="form-control" placeholder="Your name">
+	  </div>
 
-  <div class="form-group">
-    <label>Phone:</label>
-    <input name="order[phone]" type="text" class="form-control" placeholder="Your phone">
-  </div>
+	  <div class="form-group">
+	    <label>Phone:</label>
+	    <input name="order[phone]" type="text" class="form-control" placeholder="Your phone">
+	  </div>
 
-	<div class="form-group">
-		<label>Delivery Address:</label>
-		<textarea name="order[address]" class="form-control" placeholder="Delivery address" rows="5" cols="80"></textarea>
-	</div>
+		<div class="form-group">
+			<label>Delivery Address:</label>
+			<textarea name="order[address]" class="form-control" placeholder="Delivery address" rows="5" cols="80"></textarea>
+		</div>
 
-	<button type="submit" class="btn btn-success btn-lg">Place this order!</button>
-	<button class="btn btn-danger btn-lg" onclick="return cancel_order">Cancel</button>
+		<button type="submit" class="btn btn-success btn-lg">Place this order!</button>
+		<button class="btn btn-danger btn-lg" onclick="return cancel_order">Cancel</button>
 
-</form>
+	</form>
+</div>
