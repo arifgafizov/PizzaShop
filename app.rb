@@ -27,15 +27,25 @@ end
 
 
 post '/cart' do
+
+	# получаем список параметров и разбираем (parse) их
 	@orders_input = params[:orders_input]
 	@items = parse_orders_input @orders_input
 
+	# выводим сообщение, что корзина пуста
+	if @items.length == 0
+		return erb :cart_is_empty
+	end
+
+
+	# выодим список продуктов в корзине
 	@items.each do |item|
 		# id, cnt. id целиком заменяем на весь объект(заказ)
 		item[0] = Product.find(item[0])
 
 	end
 
+	# возвращаем представление по-умолчанию
 	erb :cart
 end
 
