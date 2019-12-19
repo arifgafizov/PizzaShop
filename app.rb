@@ -20,6 +20,12 @@ get '/about' do
 	erb :about
 end
 
+get '/admin' do
+	# получаем всех клиентов в переменную
+	@order1 = Order.order('created_at DESC')
+
+	erb :orders
+end
 post '/place_order' do
 	@order = Order.create params[:order]
 	erb :order_placed
